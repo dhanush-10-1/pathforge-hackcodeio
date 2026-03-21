@@ -197,6 +197,124 @@ def score_priorities(gaps: list[dict]) -> list[dict]:
     return sorted(filtered, key=lambda x: (x["priority_score"], x.get("importance", 0.0)), reverse=True)
 
 
+def compute_learning_path_with_trace(
+    verified_skills: dict,
+    role: str,
+    onet_data: dict,
+) -> dict:
+    """
+    FEATURE 2: Compute learning path WITH reasoning trace.
+    
+    Returns dict with both pathway and reasoning_trace for frontend visualization.
+    
+    Returns:
+        {
+            "pathway": [...],
+            "reasoning_trace": [...],
+            "summary": {...}
+        }
+    """
+    role_skills, importance_weights = _extract_role_skill_maps(role, onet_data)
+    if not role_skills:
+        return {"pathway": [], "reasoning_trace": [], "summary": {}}
+    
+    gaps: dict[str, dict] = {}
+    reasoning_trace = []
+    
+    # Evaluate all skills in the role — this is the trace
+    for skill, required_level in role_skills.items():
+        current_level = int(verified_skills.get(skill, 0))
+        gap = int(required_level) - current_level
+        importance = float(importance_weights.get(skill, 0.5))
+        relevance = classify_skill_relevance(skill, role, onet_data)
+        relevance_score = RELEVANCE_TIERS.get(relevance, 0)
+        
+        # Calculate priority with new formula: gap×0.5 + importance×0.3 + relevance×0.2
+        priority = round(
+            (gap / 5.0) * 0.5 + importance * 0.3 + relevance_score * 0.2, 4
+        )
+        
+        # Determine if skill is included in pathway
+        included = gap > 0 and relevance != "irrelevant"
+        
+        # Add trace entry for EVERY skill evaluated
+        reasoning_trace.append({
+            "skill": skill,
+            "current_level": current_level,
+            "required_level": required_level,
+            "gap": gap,
+            "importance_weight": importance,
+            "relevance_tier": relevance,
+            "priority_score": priority,
+            "included_in_path": included,
+            "decision": (
+                f"Included — {relevance} skill with gap of {gap}"
+                if included
+                else (
+                    "Excluded — already at required level"
+                    if gap <= 0
+                    else f"Excluded — {relevance} skill not needed for role"
+                )
+            )
+        })
+        
+        if included:
+            gaps[skill] = {
+                "gap": gap,
+                "priority": priority,
+                "relevance": relevance,
+                "required_level": int(required_level),
+                "current_level": current_level,
+                "importance": importance,
+            }
+    
+    if not gaps:
+        return {
+            "pathway": [],
+            "reasoning_trace": reasoning_trace,
+            "summary": {
+                "total_evaluated": len(reasoning_trace),
+                "in_pathway": 0,
+                "excluded": len(reasoning_trace),
+                "role": role,
+                "formula": "priority = gap×0.5 + importance×0.3 + relevance×0.2"
+            }
+        }
+    
+    # Generate pathway
+    preordered = sorted(gaps.keys(), key=lambda s: gaps[s]["priority"], reverse=True)
+    ordered = topological_sort(preordered)
+    
+    role_label = role.replace("_", " ").title()
+    pathway = []
+    for position, skill in enumerate(ordered):
+        data = gaps[skill]
+        pathway.append({
+            "skill": skill,
+            "position": position + 1,
+            "relevance": data["relevance"],
+            "priority_score": data["priority"],
+            "why": (
+                f"You scored {data['current_level']}/5 in {skill} "
+                f"but {role_label} requires {data['required_level']}/5 — "
+                f"this is a {data['relevance']} skill for your role."
+            ),
+            "module": fetch_module(skill),
+        })
+    
+    return {
+        "pathway": pathway,
+        "reasoning_trace": reasoning_trace,
+        "summary": {
+            "total_evaluated": len(reasoning_trace),
+            "in_pathway": len(pathway),
+            "excluded": len(reasoning_trace) - len(pathway),
+            "role": role,
+            "formula": "priority = gap×0.5 + importance×0.3 + relevance×0.2"
+        }
+    }
+
+
 def compute_learning_path(
     verified_skills: dict,
     role: str,

@@ -17,6 +17,18 @@ interface Module {
   resources: string[]
 }
 
+interface ReasoningTraceItem {
+  skill: string
+  current_level: number
+  required_level: number
+  gap: number
+  importance_weight: number
+  relevance_tier: string
+  priority_score: number
+  included_in_path: boolean
+  decision: string
+}
+
 interface PathwayData {
   pathway_id: string
   role: string
@@ -24,6 +36,14 @@ interface PathwayData {
   estimated_hours: number
   modules: Module[]
   message?: string
+  reasoning_trace?: ReasoningTraceItem[]
+  summary?: {
+    total_evaluated: number
+    in_pathway: number
+    excluded: number
+    role: string
+    formula: string
+  }
 }
 
 export default function PathwayPage() {
@@ -34,6 +54,7 @@ export default function PathwayPage() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [expandedModule, setExpandedModule] = useState<number | null>(null)
+  const [showTrace, setShowTrace] = useState(false)
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
 
@@ -241,6 +262,77 @@ export default function PathwayPage() {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* FEATURE 4: Reasoning Trace Panel - Toggle */}
+        <div className={styles.section}>
+          <button
+            className="btn btn-outline"
+            onClick={() => setShowTrace(!showTrace)}
+            style={{ marginBottom: '1rem' }}
+          >
+            {showTrace ? '🔍 Hide Reasoning Trace' : '🔍 Show Reasoning Trace'}
+          </button>
+
+          {/* Reasoning Trace Panel */}
+          {showTrace && pathway.reasoning_trace && (
+            <div className={styles.reasoningPanel}>
+              <h3 className={styles.sectionTitle}>Adaptive Engine — Reasoning Trace</h3>
+              <p className={styles.formula}>
+                <strong>Formula:</strong> priority = gap×0.5 + importance×0.3 + relevance×0.2
+              </p>
+
+              <div className={styles.traceTableWrapper}>
+                <table className={styles.traceTable}>
+                  <thead>
+                    <tr>
+                      <th>Skill</th>
+                      <th>Current</th>
+                      <th>Required</th>
+                      <th>Gap</th>
+                      <th>Importance</th>
+                      <th>Relevance</th>
+                      <th>Priority</th>
+                      <th>Decision</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {pathway.reasoning_trace.map((item, i) => (
+                      <tr
+                        key={i}
+                        className={item.included_in_path ? styles.included : styles.excluded}
+                      >
+                        <td className={styles.skillName}>{item.skill.replace(/_/g, ' ')}</td>
+                        <td>{item.current_level}/5</td>
+                        <td>{item.required_level}/5</td>
+                        <td>{item.gap}</td>
+                        <td>{(item.importance_weight * 100).toFixed(0)}%</td>
+                        <td>
+                          <span className={`badge badge-${item.relevance_tier === 'critical' ? 'error' : item.relevance_tier === 'important' ? 'warning' : 'info'}`}>
+                            {item.relevance_tier}
+                          </span>
+                        </td>
+                        <td>{item.priority_score.toFixed(4)}</td>
+                        <td>
+                          <span className={item.included_in_path ? styles.includedLabel : styles.excludedLabel}>
+                            {item.included_in_path ? '✅ In pathway' : '❌ Excluded'}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              {pathway.summary && (
+                <p className={styles.traceSummary}>
+                  <strong>Summary:</strong> {pathway.summary.in_pathway} skills in pathway •
+                  {pathway.summary.excluded} excluded •
+                  {pathway.summary.total_evaluated} total evaluated
+                </p>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Actions */}

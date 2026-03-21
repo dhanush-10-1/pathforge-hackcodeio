@@ -3,7 +3,7 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
 
-from app.models.quiz_generator import generate_quiz, grade_quiz
+from app.models.quiz_generator import generate_quiz, grade_quiz, generate_dynamic_quiz
 
 router = APIRouter()
 
@@ -14,6 +14,32 @@ class QuizRequest(BaseModel):
     max_questions: int = 10
     experience_years: int | None = None
     claimed_levels: dict[str, int] | None = None
+
+
+# FEATURE 3: New request/response models for dynamic quiz
+class DynamicQuizRequest(BaseModel):
+    verified_skills: dict  # {skill: level} or {skill: {level: int}}
+    role: str
+    experience_years: str = "Not detected"
+    max_questions: int = 10
+
+
+class QuizQuestionWithWhy(BaseModel):
+    skill: str
+    difficulty: int
+    question: str
+    options: list[str]
+    answer: int
+    explanation: str
+    why: str
+
+
+class DynamicQuizResponse(BaseModel):
+    questions: list[QuizQuestionWithWhy]
+    total: int
+    role: str
+    adaptive: bool = True
+    message: str
 
 
 class QuizQuestion(BaseModel):
@@ -49,6 +75,31 @@ class GradeResponse(BaseModel):
     total_score: int
     max_score: int
     skill_scores: dict[str, SkillScore]
+
+
+# FEATURE 3: New endpoint for dynamic quiz generation
+@router.post("/generate-dynamic-quiz", response_model=DynamicQuizResponse)
+async def generate_dynamic_quiz_endpoint(data: DynamicQuizRequest):
+    """
+    FEATURE 3: Generate adaptive quiz dynamically based on skill gaps and experience.
+    
+    Questions include "why" explaining which gap they address.
+    Hard cap at 10 questions — never exceeds.
+    """
+    questions = generate_dynamic_quiz(
+        verified_skills=data.verified_skills,
+        role=data.role,
+        experience=data.experience_years,
+        max_questions=data.max_questions
+    )
+    
+    return {
+        "questions": questions,
+        "total": len(questions),
+        "role": data.role,
+        "adaptive": True,
+        "message": f"Quiz generated for {data.role} — {len(questions)} targeted questions based on your skill gaps"
+    }
 
 
 @router.post("/generate-quiz", response_model=QuizResponse)

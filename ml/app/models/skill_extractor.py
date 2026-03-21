@@ -126,7 +126,7 @@ SKILL_KEYWORDS: dict[str, list[str]] = {
     "javascript": ["javascript", "js", "es6", "ecmascript"],
     "typescript": ["typescript", "ts"],
     "java": ["java", "jdk", "jvm"],
-    "sql": ["sql", "mysql", "sqlite"],
+    "sql": ["sql", "mysql", "sqlite", "postgres", "postgresql"],
     "html_css": ["html", "css", "html5", "css3", "scss", "sass"],
     "react": ["react", "reactjs", "react.js"],
     "nextjs": ["next.js", "nextjs", "next"],
@@ -497,47 +497,79 @@ def _fallback_min_mentions(skill_id: str) -> int:
     return 2 if skill_id in AMBIGUOUS_SKILLS else 1
 
 
-def _estimate_level(mentions: int, context_text: str, skill_years: int | None) -> int:
-    """Estimate skill proficiency level (1-5) from context keywords and years."""
-    text = context_text.lower()
+LEVEL_PATTERNS = {
+    5: ["expert", "lead", "architect", "principal", "10+ years", "9+ years", "8+ years"],
+    4: ["advanced", "senior", "proficient", "7+ years", "6+ years", "5+ years"],
+    3: ["intermediate", "3+ years", "4+ years", "experienced"],
+    2: ["familiar", "basic", "fundamental", "1+ year", "2+ years", "exposure", "basics"],
+    1: ["beginner", "learning", "studying", "intern", "fresher"],
+}
 
-    expert_terms = ["expert", "principal", "architect", "authority", "specialist"]
-    senior_terms = ["senior", "lead", "advanced", "mentored", "owned", "designed"]
-    intermediate_terms = ["intermediate", "proficient", "implemented", "built", "developed"]
-    beginner_terms = ["beginner", "familiar", "basic", "learning", "intro"]
 
-    keyword_level = 1
-    if any(t in text for t in expert_terms):
-        keyword_level = 5
-    elif any(t in text for t in senior_terms):
-        keyword_level = 4
-    elif any(t in text for t in intermediate_terms):
-        keyword_level = 3
-    elif any(t in text for t in beginner_terms):
-        keyword_level = 2
-    elif mentions >= 4:
-        keyword_level = 4
-    elif mentions >= 2:
-        keyword_level = 3
-    elif mentions >= 1:
-        keyword_level = 2
+def _estimate_experience(resume_text: str) -> int | str:
+    text_lower = resume_text.lower()
+    years = _extract_overall_experience_years(text_lower)
+    if years is None:
+        return "Not detected"
+    return years
 
-    if skill_years is None:
-        return max(1, min(5, keyword_level))
 
-    if skill_years >= 8:
-        year_level = 5
-    elif skill_years >= 5:
-        year_level = 4
-    elif skill_years >= 2:
-        year_level = 3
-    elif skill_years >= 1:
-        year_level = 2
+def estimate_level(skill: str, resume_text: str) -> int:
+    text_lower = resume_text.lower()
+
+    # Step 1: Global experience years from resume.
+    global_exp = _estimate_experience(resume_text)
+    try:
+        exp_years = int(str(global_exp).replace("+", "").strip())
+    except Exception:
+        exp_years = 0
+
+    # Step 2: Base level from global experience.
+    if exp_years >= 7:
+        base_level = 4
+    elif exp_years >= 4:
+        base_level = 3
+    elif exp_years >= 2:
+        base_level = 3
+    elif exp_years >= 1:
+        base_level = 2
     else:
-        year_level = 1
+        base_level = 1
 
-    blended = round((keyword_level + year_level) / 2)
-    return max(1, min(5, blended))
+    # Step 3: Find skill mention in resume.
+    skill_pos = text_lower.find(skill.lower())
+    if skill_pos == -1:
+        return max(1, min(5, base_level))
+
+    # Step 4: Check sentence-scoped context around skill mention.
+    left = text_lower.rfind(".", 0, skill_pos)
+    right = text_lower.find(".", skill_pos)
+    if left == -1:
+        left = 0
+    else:
+        left += 1
+    if right == -1:
+        right = len(text_lower)
+    context = text_lower[left:right]
+
+    # Step 5: Explicit level keywords in context.
+    for level, keywords in sorted(LEVEL_PATTERNS.items(), reverse=True):
+        for keyword in keywords:
+            if keyword in context:
+                return int(max(1, min(5, level)))
+
+    # Step 6: "familiar with X" -> level 2.
+    familiar_pattern = rf"familiar with[^.]*{re.escape(skill.lower())}"
+    if re.search(familiar_pattern, text_lower):
+        return 2
+
+    # Step 7: "proficient in X" -> level 4.
+    proficient_pattern = rf"proficient in[^.]*{re.escape(skill.lower())}"
+    if re.search(proficient_pattern, text_lower):
+        return 4
+
+    # Step 8: Fall back to base level.
+    return int(max(1, min(5, base_level)))
 
 
 def _extract_overall_experience_years(text_lower: str) -> int | None:
@@ -668,11 +700,7 @@ def extract_skills(resume_text: str, role: str | None = None) -> dict:
         if skill_years is not None:
             skill_experience[skill_id] = skill_years
 
-        level = _estimate_level(
-            mentions=info["mentions"],
-            context_text=joined_context,
-            skill_years=skill_years,
-        )
+        level = estimate_level(skill_id, resume_text)
 
         skill_info = taxonomy["skills"][skill_id]
         extracted.append({

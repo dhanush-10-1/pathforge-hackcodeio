@@ -199,6 +199,13 @@ export default function QuizPage() {
             </div>
             <h2 className={styles.questionText}>{currentQ.question}</h2>
 
+            {currentQ.why && (
+              <div className={styles.whySection}>
+                <span className={styles.whyLabel}>💡 Why this question:</span>
+                <p className={styles.whyText}>{currentQ.why}</p>
+              </div>
+            )}
+
             <div className={styles.optionsGrid}>
               {currentQ.options.map((option, idx) => (
                 <button
