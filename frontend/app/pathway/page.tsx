@@ -275,7 +275,7 @@ export default function PathwayPage() {
           </button>
 
           {/* Reasoning Trace Panel */}
-          {showTrace && pathway.reasoning_trace && (
+          {showTrace && pathway.reasoning_trace && pathway.reasoning_trace.length > 0 && (
             <div className={styles.reasoningPanel}>
               <h3 className={styles.sectionTitle}>Adaptive Engine — Reasoning Trace</h3>
               <p className={styles.formula}>
@@ -331,6 +331,12 @@ export default function PathwayPage() {
                   {pathway.summary.total_evaluated} total evaluated
                 </p>
               )}
+            </div>
+          )}
+
+          {showTrace && (!pathway.reasoning_trace || pathway.reasoning_trace.length === 0) && (
+            <div className={styles.reasoningEmpty}>
+              Reasoning trace is not available for this pathway yet. Regenerate your pathway to load the decision tree.
             </div>
           )}
         </div>

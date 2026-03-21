@@ -43,6 +43,8 @@ class PathwayResponse(BaseModel):
     estimated_hours: int
     modules: list[PathwayModule]
     message: str | None = None
+    reasoning_trace: list[dict] | None = None
+    summary: dict | None = None
 
 
 @router.post("/generate-pathway", response_model=PathwayResponse)

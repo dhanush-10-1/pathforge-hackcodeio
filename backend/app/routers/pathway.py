@@ -72,6 +72,8 @@ async def generate_pathway(
         estimated_hours=pathway_data["estimated_hours"],
         modules=pathway_data.get("modules", []),
         message=pathway_data.get("message"),
+        reasoning_trace=pathway_data.get("reasoning_trace"),
+        summary=pathway_data.get("summary"),
     )
 
 
@@ -96,4 +98,6 @@ async def get_pathway(
         estimated_hours=pd.get("estimated_hours", 0),
         modules=pd.get("modules", []),
         message=pd.get("message"),
+        reasoning_trace=pd.get("reasoning_trace"),
+        summary=pd.get("summary"),
     )

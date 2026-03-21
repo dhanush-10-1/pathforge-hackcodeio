@@ -514,11 +514,20 @@ def generate_pathway(
 
     total_hours = sum(m["estimated_hours"] for m in modules)
 
+    # Add reasoning trace alongside modules for frontend explainability.
+    trace_payload = compute_learning_path_with_trace(
+        verified_skills=verified_skills,
+        role=role_key,
+        onet_data=taxonomy,
+    )
+
     return {
         "role": role_title,
         "total_modules": len(modules),
         "estimated_hours": total_hours,
         "modules": modules,
+        "reasoning_trace": trace_payload.get("reasoning_trace", []),
+        "summary": trace_payload.get("summary", {}),
     }
 
 

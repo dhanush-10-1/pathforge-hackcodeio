@@ -430,6 +430,14 @@
   border-left: 3px solid var(--info);
 }
 
+.reasoningEmpty {
+  padding: 14px 16px;
+  border: 1px dashed var(--border-color);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  background: rgba(124, 58, 237, 0.04);
+}
+
 @media (max-width: 768px) {
   .statsGrid { grid-template-columns: repeat(2, 1fr); }
   .moduleHeader { flex-wrap: wrap; }

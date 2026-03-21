@@ -93,3 +93,5 @@ class PathwayResponse(BaseModel):
     estimated_hours: int
     modules: list[dict]
     message: str | None = None
+    reasoning_trace: list[dict] | None = None
+    summary: dict | None = None
