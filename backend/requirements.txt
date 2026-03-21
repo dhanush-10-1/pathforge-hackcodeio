@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+pydantic
+sqlalchemy[asyncio]
+asyncpg
+alembic
+python-multipart
+httpx
+python-jose[cryptography]
+passlib[bcrypt]
+PyPDF2
+python-dotenv
+supabase
+psycopg2-binary
+pytesseract
+Pillow

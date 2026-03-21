@@ -1,0 +1,411 @@
+.page {
+  min-height: 100vh;
+  padding-bottom: 4rem;
+}
+
+.topBar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: rgba(10, 10, 15, 0.9);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.backLink {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.backLink:hover {
+  color: var(--text-primary);
+}
+
+.progressSteps {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.progressStep {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.progressStep.active {
+  color: var(--accent-secondary);
+}
+
+.progressDot {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  font-size: 0.7rem;
+  font-weight: 700;
+  transition: all var(--transition-fast);
+}
+
+.progressStep.active .progressDot {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: white;
+}
+
+.progressLine {
+  width: 32px;
+  height: 2px;
+  background: var(--border-color);
+}
+
+/* ── Step Content ── */
+.stepContent {
+  max-width: 800px;
+  margin: 3rem auto 0;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.stepHeader {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.stepHeader h1 {
+  font-size: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.stepDesc {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ── Resume Form ── */
+.resumeForm {
+  margin-bottom: 1rem;
+}
+
+.modeSwitch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 1rem;
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+}
+
+.modeButton {
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-secondary);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.modeButton:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.modeButtonActive {
+  color: var(--text-primary);
+  background: rgba(124, 58, 237, 0.12);
+  border-color: rgba(124, 58, 237, 0.35);
+}
+
+.resumeForm textarea {
+  font-family: 'Inter', monospace;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  min-height: 280px;
+}
+
+.resumeActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  gap: 12px;
+}
+
+.textActions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.textMetaRow {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.textMeta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Skills Grid ── */
+.skillsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+.skillChip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+}
+
+.skillName {
+  font-weight: 600;
+}
+
+.skillLevel {
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  color: var(--accent-secondary);
+}
+
+.relevanceBadge {
+  font-size: 0.68rem;
+  border-radius: 999px;
+  padding: 3px 8px;
+  border: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.rel_critical {
+  background: rgba(34, 197, 94, 0.14);
+  border-color: rgba(34, 197, 94, 0.35);
+  color: #86efac;
+}
+
+.rel_important {
+  background: rgba(250, 204, 21, 0.14);
+  border-color: rgba(250, 204, 21, 0.35);
+  color: #fde68a;
+}
+
+.rel_peripheral {
+  background: rgba(59, 130, 246, 0.14);
+  border-color: rgba(59, 130, 246, 0.35);
+  color: #93c5fd;
+}
+
+.rel_irrelevant {
+  background: rgba(148, 163, 184, 0.14);
+  border-color: rgba(148, 163, 184, 0.35);
+  color: #cbd5e1;
+  opacity: 0.82;
+}
+
+.rel_unknown {
+  background: rgba(113, 113, 122, 0.12);
+  border-color: rgba(113, 113, 122, 0.3);
+  color: #d4d4d8;
+}
+
+.experienceTag {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-bottom: 2rem;
+}
+
+.roleSelectWrap {
+  margin: 0 auto 1rem;
+  max-width: 420px;
+}
+
+.roleSelect {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--text-muted) 50%), linear-gradient(135deg, var(--text-muted) 50%, transparent 50%);
+  background-position: calc(100% - 18px) calc(50% - 2px), calc(100% - 12px) calc(50% - 2px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 34px;
+}
+
+/* ── Role Grid ── */
+.roleGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-bottom: 2rem;
+}
+
+.roleCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 20px 16px;
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-family: inherit;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.roleCard:hover {
+  border-color: var(--border-accent);
+  background: var(--bg-card-hover);
+}
+
+.roleSelected {
+  border-color: var(--accent-primary) !important;
+  background: rgba(124, 58, 237, 0.1) !important;
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.15);
+}
+
+.roleIcon {
+  font-size: 2rem;
+}
+
+.roleTitle {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.roleDesc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* ── Actions ── */
+.stepActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.error {
+  text-align: center;
+  color: var(--error);
+  font-size: 0.9rem;
+  margin-top: 0.75rem;
+  padding: 8px 16px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: var(--radius-md);
+}
+
+@media (max-width: 768px) {
+  .roleGrid { grid-template-columns: repeat(2, 1fr); }
+  .progressSteps { display: none; }
+
+  .resumeActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .textActions {
+    justify-content: center;
+  }
+}
+
+/* ── Drop Zone ── */
+.dropZone {
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  transition: all var(--transition-base);
+  background: var(--bg-card);
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.dropZone:hover, .dropZone.dragging {
+  border-color: var(--accent-primary);
+  background: rgba(124, 58, 237, 0.05);
+  color: var(--text-primary);
+}
+
+.dropHint {
+  margin-top: 0.45rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.dropZone p {
+  pointer-events: none;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 1.5rem 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.divider:not(:empty)::before {
+  margin-right: 1rem;
+}
+
+.divider:not(:empty)::after {
+  margin-left: 1rem;
+}

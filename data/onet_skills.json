@@ -1,0 +1,1872 @@
+{
+  "skills": {
+    "python": {
+      "name": "Python Programming",
+      "category": "Programming Languages",
+      "description": "General-purpose programming language used for web development, data analysis, machine learning, and automation.",
+      "difficulty": 2,
+      "prerequisites": []
+    },
+    "javascript": {
+      "name": "JavaScript",
+      "category": "Programming Languages",
+      "description": "Dynamic programming language primarily used for web development, both client-side and server-side.",
+      "difficulty": 2,
+      "prerequisites": []
+    },
+    "typescript": {
+      "name": "TypeScript",
+      "category": "Programming Languages",
+      "description": "Typed superset of JavaScript that compiles to plain JavaScript, enhancing code quality and developer productivity.",
+      "difficulty": 3,
+      "prerequisites": [
+        "javascript"
+      ]
+    },
+    "java": {
+      "name": "Java",
+      "category": "Programming Languages",
+      "description": "Object-oriented programming language designed for platform independence and enterprise applications.",
+      "difficulty": 3,
+      "prerequisites": []
+    },
+    "sql": {
+      "name": "SQL",
+      "category": "Data Management",
+      "description": "Standard language for managing and querying relational databases.",
+      "difficulty": 2,
+      "prerequisites": []
+    },
+    "html_css": {
+      "name": "HTML & CSS",
+      "category": "Web Development",
+      "description": "Foundational web technologies for structuring and styling web pages.",
+      "difficulty": 1,
+      "prerequisites": []
+    },
+    "react": {
+      "name": "React",
+      "category": "Frontend Frameworks",
+      "description": "JavaScript library for building user interfaces with component-based architecture and virtual DOM.",
+      "difficulty": 3,
+      "prerequisites": [
+        "javascript",
+        "html_css"
+      ]
+    },
+    "nextjs": {
+      "name": "Next.js",
+      "category": "Frontend Frameworks",
+      "description": "React framework for production with server-side rendering, static generation, and API routes.",
+      "difficulty": 4,
+      "prerequisites": [
+        "react",
+        "typescript"
+      ]
+    },
+    "nodejs": {
+      "name": "Node.js",
+      "category": "Backend Development",
+      "description": "JavaScript runtime for server-side development, enabling full-stack JavaScript applications.",
+      "difficulty": 3,
+      "prerequisites": [
+        "javascript"
+      ]
+    },
+    "fastapi": {
+      "name": "FastAPI",
+      "category": "Backend Development",
+      "description": "Modern Python web framework for building APIs with automatic validation, serialization, and documentation.",
+      "difficulty": 3,
+      "prerequisites": [
+        "python"
+      ]
+    },
+    "django": {
+      "name": "Django",
+      "category": "Backend Development",
+      "description": "High-level Python web framework with built-in ORM, admin panel, and security features.",
+      "difficulty": 3,
+      "prerequisites": [
+        "python",
+        "sql"
+      ]
+    },
+    "flask": {
+      "name": "Flask",
+      "category": "Backend Development",
+      "description": "Lightweight Python web framework for building simple to moderately complex web applications.",
+      "difficulty": 2,
+      "prerequisites": [
+        "python"
+      ]
+    },
+    "postgresql": {
+      "name": "PostgreSQL",
+      "category": "Data Management",
+      "description": "Advanced open-source relational database with support for JSON, full-text search, and extensibility.",
+      "difficulty": 3,
+      "prerequisites": [
+        "sql"
+      ]
+    },
+    "mongodb": {
+      "name": "MongoDB",
+      "category": "Data Management",
+      "description": "NoSQL document database for flexible, schema-less data storage and high scalability.",
+      "difficulty": 2,
+      "prerequisites": []
+    },
+    "docker": {
+      "name": "Docker",
+      "category": "DevOps",
+      "description": "Platform for containerizing applications to ensure consistent environments across development and production.",
+      "difficulty": 3,
+      "prerequisites": []
+    },
+    "kubernetes": {
+      "name": "Kubernetes",
+      "category": "DevOps",
+      "description": "Container orchestration platform for automating deployment, scaling, and management of containerized applications.",
+      "difficulty": 5,
+      "prerequisites": [
+        "docker"
+      ]
+    },
+    "git": {
+      "name": "Git",
+      "category": "DevOps",
+      "description": "Distributed version control system for tracking changes in source code during software development.",
+      "difficulty": 2,
+      "prerequisites": []
+    },
+    "ci_cd": {
+      "name": "CI/CD Pipelines",
+      "category": "DevOps",
+      "description": "Continuous integration and continuous deployment practices for automated testing and deployment.",
+      "difficulty": 4,
+      "prerequisites": [
+        "git",
+        "docker"
+      ]
+    },
+    "machine_learning": {
+      "name": "Machine Learning",
+      "category": "AI/ML",
+      "description": "Building systems that learn from data to make predictions or decisions without explicit programming.",
+      "difficulty": 4,
+      "prerequisites": [
+        "python"
+      ]
+    },
+    "deep_learning": {
+      "name": "Deep Learning",
+      "category": "AI/ML",
+      "description": "Subset of machine learning using neural networks with multiple layers for complex pattern recognition.",
+      "difficulty": 5,
+      "prerequisites": [
+        "machine_learning"
+      ]
+    },
+    "nlp": {
+      "name": "Natural Language Processing",
+      "category": "AI/ML",
+      "description": "AI techniques for understanding, interpreting, and generating human language.",
+      "difficulty": 5,
+      "prerequisites": [
+        "machine_learning"
+      ]
+    },
+    "data_analysis": {
+      "name": "Data Analysis",
+      "category": "Data Science",
+      "description": "Process of inspecting, cleaning, and modeling data to discover useful information and support decision-making.",
+      "difficulty": 3,
+      "prerequisites": [
+        "python",
+        "sql"
+      ]
+    },
+    "rest_api": {
+      "name": "REST API Design",
+      "category": "Backend Development",
+      "description": "Designing web APIs following REST architectural principles for scalable and maintainable services.",
+      "difficulty": 3,
+      "prerequisites": []
+    },
+    "graphql": {
+      "name": "GraphQL",
+      "category": "Backend Development",
+      "description": "Query language for APIs that enables clients to request exactly the data they need.",
+      "difficulty": 4,
+      "prerequisites": [
+        "rest_api"
+      ]
+    },
+    "aws": {
+      "name": "AWS",
+      "category": "Cloud Platforms",
+      "description": "Amazon Web Services cloud computing platform offering compute, storage, and various managed services.",
+      "difficulty": 4,
+      "prerequisites": []
+    },
+    "testing": {
+      "name": "Software Testing",
+      "category": "Quality Assurance",
+      "description": "Practices and methodologies for verifying software quality through unit, integration, and end-to-end testing.",
+      "difficulty": 3,
+      "prerequisites": []
+    },
+    "agile": {
+      "name": "Agile Methodologies",
+      "category": "Project Management",
+      "description": "Iterative approach to project management and software development emphasizing flexibility and collaboration.",
+      "difficulty": 2,
+      "prerequisites": []
+    },
+    "system_design": {
+      "name": "System Design",
+      "category": "Architecture",
+      "description": "Designing scalable, reliable, and maintainable software systems and architectures.",
+      "difficulty": 5,
+      "prerequisites": [
+        "rest_api",
+        "sql"
+      ]
+    },
+    "redis": {
+      "name": "Redis",
+      "category": "Data Management",
+      "description": "In-memory data store used as database, cache, and message broker for high-performance applications.",
+      "difficulty": 3,
+      "prerequisites": []
+    },
+    "tailwindcss": {
+      "name": "Tailwind CSS",
+      "category": "Frontend Frameworks",
+      "description": "Utility-first CSS framework for rapidly building custom user interfaces.",
+      "difficulty": 2,
+      "prerequisites": [
+        "html_css"
+      ]
+    },
+    "linux": {
+      "name": "Linux",
+      "category": "Operating Systems",
+      "description": "Operating system proficiency for server administration, scripting, and development workflows.",
+      "difficulty": 3,
+      "prerequisites": []
+    },
+    "excel": {
+      "name": "Excel",
+      "category": "Data Analysis Tools",
+      "description": "Spreadsheet analysis tool used for reporting, data cleaning, and dashboarding.",
+      "difficulty": 2,
+      "prerequisites": []
+    },
+    "tableau": {
+      "name": "Tableau",
+      "category": "Data Visualization",
+      "description": "Business intelligence and visualization platform for interactive dashboards and analytics.",
+      "difficulty": 3,
+      "prerequisites": [
+        "data_analysis"
+      ]
+    },
+    "pandas": {
+      "name": "Pandas",
+      "category": "Data Science",
+      "description": "Python library for structured data manipulation and analysis.",
+      "difficulty": 3,
+      "prerequisites": [
+        "python"
+      ]
+    },
+    "numpy": {
+      "name": "NumPy",
+      "category": "Data Science",
+      "description": "Python numerical computing library used for arrays, vectorized operations, and scientific computing.",
+      "difficulty": 3,
+      "prerequisites": [
+        "python"
+      ]
+    },
+    "statistics": {
+      "name": "Statistics",
+      "category": "Data Science",
+      "description": "Statistical concepts and methods used for inference, experimentation, and decision-making.",
+      "difficulty": 3,
+      "prerequisites": []
+    },
+    "power_bi": {
+      "name": "Power BI",
+      "category": "Data Visualization",
+      "description": "Microsoft business intelligence platform for dashboards, reports, and data storytelling.",
+      "difficulty": 3,
+      "prerequisites": [
+        "data_analysis"
+      ]
+    },
+    "r": {
+      "name": "R",
+      "category": "Programming Languages",
+      "description": "Programming language and environment for statistical computing and graphics.",
+      "difficulty": 3,
+      "prerequisites": []
+    },
+    "communication": {
+      "name": "Communication",
+      "category": "Professional Skills",
+      "description": "Clear written and verbal communication for collaboration, stakeholder alignment, and reporting.",
+      "difficulty": 2,
+      "prerequisites": []
+    },
+    "scrum": {
+      "name": "Scrum",
+      "category": "Project Management",
+      "description": "Agile framework for iterative delivery with defined events, roles, and artifacts.",
+      "difficulty": 2,
+      "prerequisites": [
+        "agile"
+      ]
+    },
+    "project_management": {
+      "name": "Project Management",
+      "category": "Project Management",
+      "description": "Planning, execution, and delivery management of projects under scope, time, and budget constraints.",
+      "difficulty": 3,
+      "prerequisites": []
+    },
+    "leadership": {
+      "name": "Leadership",
+      "category": "Professional Skills",
+      "description": "Leading teams, decision-making, and driving outcomes across cross-functional stakeholders.",
+      "difficulty": 3,
+      "prerequisites": []
+    },
+    "jira": {
+      "name": "Jira",
+      "category": "Project Management Tools",
+      "description": "Issue tracking and project planning tool commonly used in agile software teams.",
+      "difficulty": 2,
+      "prerequisites": []
+    },
+    "figma": {
+      "name": "Figma",
+      "category": "Design Tools",
+      "description": "Collaborative interface design and prototyping platform for digital products.",
+      "difficulty": 2,
+      "prerequisites": []
+    },
+    "vue": {
+      "name": "Vue.js",
+      "category": "Frontend Frameworks",
+      "description": "Progressive JavaScript framework for building user interfaces and single-page applications.",
+      "difficulty": 3,
+      "prerequisites": [
+        "javascript",
+        "html_css"
+      ]
+    },
+    "webpack": {
+      "name": "Webpack",
+      "category": "Frontend Tooling",
+      "description": "Module bundler for JavaScript applications with code splitting and build optimization support.",
+      "difficulty": 3,
+      "prerequisites": [
+        "javascript"
+      ]
+    },
+    "expressjs": {
+      "name": "Express.js",
+      "category": "Backend Development",
+      "description": "Minimal and flexible Node.js web application framework.",
+      "difficulty": 3,
+      "prerequisites": [
+        "nodejs"
+      ]
+    },
+    "spring": {
+      "name": "Spring",
+      "category": "Backend Development",
+      "description": "Java framework for enterprise backend and microservices development.",
+      "difficulty": 4,
+      "prerequisites": [
+        "java"
+      ]
+    },
+    "laravel": {
+      "name": "Laravel",
+      "category": "Backend Development",
+      "description": "PHP framework for modern web applications.",
+      "difficulty": 3,
+      "prerequisites": []
+    },
+    "rails": {
+      "name": "Ruby on Rails",
+      "category": "Backend Development",
+      "description": "Ruby framework for convention-over-configuration web development.",
+      "difficulty": 3,
+      "prerequisites": []
+    },
+    "grpc": {
+      "name": "gRPC",
+      "category": "Backend Development",
+      "description": "High-performance RPC framework for distributed systems.",
+      "difficulty": 4,
+      "prerequisites": []
+    },
+    "angular": {
+      "name": "Angular",
+      "category": "Frontend Frameworks",
+      "description": "TypeScript-based web application framework.",
+      "difficulty": 3,
+      "prerequisites": [
+        "typescript"
+      ]
+    },
+    "svelte": {
+      "name": "Svelte",
+      "category": "Frontend Frameworks",
+      "description": "Compiler-based framework for building reactive web interfaces.",
+      "difficulty": 3,
+      "prerequisites": [
+        "javascript"
+      ]
+    },
+    "babel": {
+      "name": "Babel",
+      "category": "Frontend Tooling",
+      "description": "JavaScript compiler for syntax transforms and compatibility.",
+      "difficulty": 3,
+      "prerequisites": [
+        "javascript"
+      ]
+    },
+    "scikit_learn": {
+      "name": "Scikit-learn",
+      "category": "AI/ML",
+      "description": "Python library for classical machine learning algorithms.",
+      "difficulty": 4,
+      "prerequisites": [
+        "python"
+      ]
+    },
+    "tensorflow": {
+      "name": "TensorFlow",
+      "category": "AI/ML",
+      "description": "Deep learning framework for building and training neural networks.",
+      "difficulty": 4,
+      "prerequisites": [
+        "machine_learning"
+      ]
+    },
+    "keras": {
+      "name": "Keras",
+      "category": "AI/ML",
+      "description": "High-level neural network API for rapid deep learning development.",
+      "difficulty": 4,
+      "prerequisites": [
+        "tensorflow"
+      ]
+    },
+    "pytorch": {
+      "name": "PyTorch",
+      "category": "AI/ML",
+      "description": "Deep learning framework for dynamic neural network development.",
+      "difficulty": 4,
+      "prerequisites": [
+        "machine_learning"
+      ]
+    },
+    "matplotlib": {
+      "name": "Matplotlib",
+      "category": "Data Science",
+      "description": "Plotting library for data visualization in Python.",
+      "difficulty": 2,
+      "prerequisites": [
+        "python"
+      ]
+    },
+    "seaborn": {
+      "name": "Seaborn",
+      "category": "Data Science",
+      "description": "Statistical data visualization library based on matplotlib.",
+      "difficulty": 2,
+      "prerequisites": [
+        "matplotlib"
+      ]
+    },
+    "scipy": {
+      "name": "SciPy",
+      "category": "Data Science",
+      "description": "Scientific computing library for Python.",
+      "difficulty": 3,
+      "prerequisites": [
+        "numpy"
+      ]
+    },
+    "xgboost": {
+      "name": "XGBoost",
+      "category": "AI/ML",
+      "description": "Gradient boosting library optimized for performance and accuracy.",
+      "difficulty": 4,
+      "prerequisites": [
+        "machine_learning"
+      ]
+    },
+    "lightgbm": {
+      "name": "LightGBM",
+      "category": "AI/ML",
+      "description": "Gradient boosting framework for efficient tree-based learning.",
+      "difficulty": 4,
+      "prerequisites": [
+        "machine_learning"
+      ]
+    },
+    "nltk": {
+      "name": "NLTK",
+      "category": "AI/ML",
+      "description": "Natural language toolkit for text processing.",
+      "difficulty": 3,
+      "prerequisites": [
+        "python"
+      ]
+    },
+    "spacy": {
+      "name": "spaCy",
+      "category": "AI/ML",
+      "description": "Industrial-strength NLP library for Python.",
+      "difficulty": 4,
+      "prerequisites": [
+        "python"
+      ]
+    },
+    "opencv": {
+      "name": "OpenCV",
+      "category": "AI/ML",
+      "description": "Computer vision library for image and video processing.",
+      "difficulty": 4,
+      "prerequisites": [
+        "python"
+      ]
+    },
+    "huggingface": {
+      "name": "Hugging Face",
+      "category": "AI/ML",
+      "description": "Ecosystem for transformer models and NLP tooling.",
+      "difficulty": 4,
+      "prerequisites": [
+        "machine_learning"
+      ]
+    },
+    "transformers": {
+      "name": "Transformers",
+      "category": "AI/ML",
+      "description": "Library for transformer-based NLP and multimodal models.",
+      "difficulty": 4,
+      "prerequisites": [
+        "machine_learning"
+      ]
+    },
+    "jupyter": {
+      "name": "Jupyter",
+      "category": "Data Science Tools",
+      "description": "Interactive notebook environment for data science workflows.",
+      "difficulty": 2,
+      "prerequisites": []
+    },
+    "colab": {
+      "name": "Google Colab",
+      "category": "Data Science Tools",
+      "description": "Cloud-hosted notebook environment for Python and ML.",
+      "difficulty": 2,
+      "prerequisites": []
+    },
+    "mlflow": {
+      "name": "MLflow",
+      "category": "MLOps",
+      "description": "Platform for tracking and managing ML experiments and models.",
+      "difficulty": 3,
+      "prerequisites": [
+        "machine_learning"
+      ]
+    },
+    "airflow": {
+      "name": "Apache Airflow",
+      "category": "Data Engineering",
+      "description": "Workflow orchestration platform for data pipelines.",
+      "difficulty": 4,
+      "prerequisites": []
+    },
+    "spark": {
+      "name": "Apache Spark",
+      "category": "Data Engineering",
+      "description": "Distributed data processing engine for large-scale analytics.",
+      "difficulty": 4,
+      "prerequisites": []
+    },
+    "hadoop": {
+      "name": "Hadoop",
+      "category": "Data Engineering",
+      "description": "Framework for distributed storage and processing of large datasets.",
+      "difficulty": 4,
+      "prerequisites": []
+    },
+    "kafka": {
+      "name": "Apache Kafka",
+      "category": "Data Engineering",
+      "description": "Distributed event streaming platform for real-time pipelines.",
+      "difficulty": 4,
+      "prerequisites": []
+    },
+    "dbt": {
+      "name": "dbt",
+      "category": "Data Engineering",
+      "description": "Data transformation framework for analytics engineering.",
+      "difficulty": 3,
+      "prerequisites": [
+        "sql"
+      ]
+    },
+    "snowflake": {
+      "name": "Snowflake",
+      "category": "Data Platforms",
+      "description": "Cloud-native data warehouse platform.",
+      "difficulty": 3,
+      "prerequisites": [
+        "sql"
+      ]
+    },
+    "bigquery": {
+      "name": "BigQuery",
+      "category": "Data Platforms",
+      "description": "Google cloud data warehouse for large-scale analytics.",
+      "difficulty": 3,
+      "prerequisites": [
+        "sql"
+      ]
+    },
+    "redshift": {
+      "name": "Amazon Redshift",
+      "category": "Data Platforms",
+      "description": "AWS-managed cloud data warehouse.",
+      "difficulty": 3,
+      "prerequisites": [
+        "sql"
+      ]
+    },
+    "hive": {
+      "name": "Apache Hive",
+      "category": "Data Engineering",
+      "description": "SQL-like data warehouse software on Hadoop.",
+      "difficulty": 3,
+      "prerequisites": [
+        "hadoop"
+      ]
+    },
+    "flink": {
+      "name": "Apache Flink",
+      "category": "Data Engineering",
+      "description": "Stream processing framework for stateful computations.",
+      "difficulty": 4,
+      "prerequisites": []
+    },
+    "mysql": {
+      "name": "MySQL",
+      "category": "Data Management",
+      "description": "Relational database system used for transactional workloads.",
+      "difficulty": 2,
+      "prerequisites": [
+        "sql"
+      ]
+    },
+    "firebase": {
+      "name": "Firebase",
+      "category": "Data Platforms",
+      "description": "Backend platform for mobile and web applications.",
+      "difficulty": 2,
+      "prerequisites": []
+    },
+    "dynamodb": {
+      "name": "DynamoDB",
+      "category": "Data Management",
+      "description": "AWS-managed NoSQL key-value and document database.",
+      "difficulty": 3,
+      "prerequisites": [
+        "aws"
+      ]
+    },
+    "cassandra": {
+      "name": "Cassandra",
+      "category": "Data Management",
+      "description": "Distributed NoSQL database for high availability.",
+      "difficulty": 3,
+      "prerequisites": []
+    },
+    "neo4j": {
+      "name": "Neo4j",
+      "category": "Data Management",
+      "description": "Graph database for connected data use cases.",
+      "difficulty": 3,
+      "prerequisites": []
+    },
+    "elasticsearch": {
+      "name": "Elasticsearch",
+      "category": "Data Management",
+      "description": "Distributed search and analytics engine.",
+      "difficulty": 3,
+      "prerequisites": []
+    },
+    "gcp": {
+      "name": "Google Cloud Platform",
+      "category": "Cloud Platforms",
+      "description": "Google cloud services for infrastructure and data.",
+      "difficulty": 4,
+      "prerequisites": []
+    },
+    "azure": {
+      "name": "Microsoft Azure",
+      "category": "Cloud Platforms",
+      "description": "Microsoft cloud platform for compute, storage, and AI services.",
+      "difficulty": 4,
+      "prerequisites": []
+    },
+    "terraform": {
+      "name": "Terraform",
+      "category": "DevOps",
+      "description": "Infrastructure-as-code tool for cloud provisioning.",
+      "difficulty": 4,
+      "prerequisites": []
+    },
+    "ansible": {
+      "name": "Ansible",
+      "category": "DevOps",
+      "description": "Automation tool for configuration management and deployments.",
+      "difficulty": 3,
+      "prerequisites": []
+    },
+    "jenkins": {
+      "name": "Jenkins",
+      "category": "DevOps",
+      "description": "Automation server for CI/CD pipelines.",
+      "difficulty": 3,
+      "prerequisites": []
+    },
+    "github_actions": {
+      "name": "GitHub Actions",
+      "category": "DevOps",
+      "description": "CI/CD workflow automation integrated with GitHub.",
+      "difficulty": 3,
+      "prerequisites": [
+        "git"
+      ]
+    },
+    "nginx": {
+      "name": "Nginx",
+      "category": "DevOps",
+      "description": "Web server and reverse proxy for high-performance applications.",
+      "difficulty": 3,
+      "prerequisites": []
+    },
+    "prometheus": {
+      "name": "Prometheus",
+      "category": "DevOps",
+      "description": "Monitoring and alerting toolkit for observability.",
+      "difficulty": 3,
+      "prerequisites": []
+    },
+    "grafana": {
+      "name": "Grafana",
+      "category": "DevOps",
+      "description": "Visualization and dashboard platform for metrics and logs.",
+      "difficulty": 3,
+      "prerequisites": []
+    },
+    "looker": {
+      "name": "Looker",
+      "category": "Data Visualization",
+      "description": "Business intelligence platform for semantic modeling and dashboards.",
+      "difficulty": 3,
+      "prerequisites": [
+        "data_analysis"
+      ]
+    },
+    "google_analytics": {
+      "name": "Google Analytics",
+      "category": "Analytics",
+      "description": "Web analytics service for traffic and behavior insights.",
+      "difficulty": 2,
+      "prerequisites": []
+    },
+    "confluence": {
+      "name": "Confluence",
+      "category": "Project Management Tools",
+      "description": "Collaboration workspace and documentation platform.",
+      "difficulty": 2,
+      "prerequisites": []
+    },
+    "postman": {
+      "name": "Postman",
+      "category": "Developer Tools",
+      "description": "API development and testing platform.",
+      "difficulty": 2,
+      "prerequisites": []
+    },
+    "swagger": {
+      "name": "Swagger/OpenAPI",
+      "category": "Developer Tools",
+      "description": "API specification and documentation tooling.",
+      "difficulty": 2,
+      "prerequisites": [
+        "rest_api"
+      ]
+    },
+    "pytest": {
+      "name": "Pytest",
+      "category": "Quality Assurance",
+      "description": "Python testing framework for unit and integration tests.",
+      "difficulty": 2,
+      "prerequisites": [
+        "python"
+      ]
+    },
+    "jest": {
+      "name": "Jest",
+      "category": "Quality Assurance",
+      "description": "JavaScript testing framework.",
+      "difficulty": 2,
+      "prerequisites": [
+        "javascript"
+      ]
+    },
+    "selenium": {
+      "name": "Selenium",
+      "category": "Quality Assurance",
+      "description": "Browser automation framework for end-to-end testing.",
+      "difficulty": 3,
+      "prerequisites": []
+    },
+    "cypress": {
+      "name": "Cypress",
+      "category": "Quality Assurance",
+      "description": "End-to-end testing framework for modern web apps.",
+      "difficulty": 3,
+      "prerequisites": [
+        "javascript"
+      ]
+    },
+    "problem_solving": {
+      "name": "Problem Solving",
+      "category": "Professional Skills",
+      "description": "Analytical thinking and structured troubleshooting skills.",
+      "difficulty": 2,
+      "prerequisites": []
+    },
+    "vscode": {
+      "name": "VS Code",
+      "category": "Developer Tools",
+      "description": "Code editor used for software development.",
+      "difficulty": 1,
+      "prerequisites": []
+    },
+    "bash": {
+      "name": "Bash",
+      "category": "Operating Systems",
+      "description": "Unix shell scripting for automation and system tasks.",
+      "difficulty": 2,
+      "prerequisites": [
+        "linux"
+      ]
+    }
+  },
+  "roles": {
+    "backend_engineer": {
+      "title": "Backend Engineer",
+      "description": "Designs and builds server-side logic, APIs, and database systems.",
+      "required_skills": {
+        "python": {
+          "level": 4,
+          "importance": 0.95
+        },
+        "sql": {
+          "level": 4,
+          "importance": 0.9
+        },
+        "rest_api": {
+          "level": 4,
+          "importance": 0.9
+        },
+        "git": {
+          "level": 3,
+          "importance": 0.88
+        },
+        "docker": {
+          "level": 3,
+          "importance": 0.88
+        },
+        "fastapi": {
+          "level": 4,
+          "importance": 0.9
+        },
+        "django": {
+          "level": 3,
+          "importance": 0.8
+        },
+        "nodejs": {
+          "level": 3,
+          "importance": 0.72
+        },
+        "postgresql": {
+          "level": 4,
+          "importance": 0.87
+        },
+        "aws": {
+          "level": 3,
+          "importance": 0.8
+        },
+        "linux": {
+          "level": 3,
+          "importance": 0.75
+        },
+        "redis": {
+          "level": 3,
+          "importance": 0.68
+        },
+        "kubernetes": {
+          "level": 3,
+          "importance": 0.7
+        },
+        "javascript": {
+          "level": 3,
+          "importance": 0.7
+        },
+        "typescript": {
+          "level": 3,
+          "importance": 0.72
+        },
+        "agile": {
+          "level": 3,
+          "importance": 0.65
+        },
+        "scrum": {
+          "level": 3,
+          "importance": 0.65
+        },
+        "communication": {
+          "level": 3,
+          "importance": 0.65
+        },
+        "node.js": {
+          "level": 3,
+          "importance": 0.72
+        }
+      },
+      "skills": {
+        "python": 4,
+        "fastapi": 4,
+        "django": 3,
+        "nodejs": 3,
+        "postgresql": 4,
+        "docker": 3,
+        "aws": 3,
+        "rest_api": 4,
+        "git": 3,
+        "linux": 3,
+        "redis": 3,
+        "kubernetes": 3,
+        "sql": 4,
+        "javascript": 3,
+        "typescript": 3,
+        "agile": 3,
+        "scrum": 3,
+        "communication": 3,
+        "html_css": 2,
+        "tailwindcss": 2,
+        "data_analysis": 2,
+        "machine_learning": 1,
+        "react": 1,
+        "node.js": 3,
+        "tailwind_css": 2
+      },
+      "importance_weights": {
+        "python": 0.95,
+        "fastapi": 0.9,
+        "rest_api": 0.9,
+        "sql": 0.9,
+        "git": 0.88,
+        "docker": 0.88,
+        "postgresql": 0.87,
+        "django": 0.8,
+        "aws": 0.8,
+        "linux": 0.75,
+        "nodejs": 0.72,
+        "typescript": 0.72,
+        "javascript": 0.7,
+        "kubernetes": 0.7,
+        "redis": 0.68,
+        "agile": 0.65,
+        "scrum": 0.65,
+        "communication": 0.65,
+        "html_css": 0.35,
+        "tailwindcss": 0.3,
+        "data_analysis": 0.3,
+        "machine_learning": 0.25,
+        "react": 0.2,
+        "node.js": 0.72,
+        "tailwind_css": 0.3
+      }
+    },
+    "frontend_engineer": {
+      "title": "Frontend Engineer",
+      "description": "Builds interactive user interfaces and client-side applications.",
+      "required_skills": {
+        "javascript": {
+          "level": 5,
+          "importance": 0.98
+        },
+        "react": {
+          "level": 5,
+          "importance": 0.95
+        },
+        "html_css": {
+          "level": 4,
+          "importance": 0.92
+        },
+        "git": {
+          "level": 3,
+          "importance": 0.8
+        },
+        "typescript": {
+          "level": 4,
+          "importance": 0.9
+        },
+        "nextjs": {
+          "level": 4,
+          "importance": 0.88
+        },
+        "tailwindcss": {
+          "level": 3,
+          "importance": 0.8
+        },
+        "rest_api": {
+          "level": 3,
+          "importance": 0.78
+        },
+        "figma": {
+          "level": 3,
+          "importance": 0.72
+        },
+        "vue": {
+          "level": 2,
+          "importance": 0.55
+        },
+        "angular": {
+          "level": 2,
+          "importance": 0.55
+        },
+        "webpack": {
+          "level": 2,
+          "importance": 0.5
+        },
+        "jest": {
+          "level": 2,
+          "importance": 0.5
+        },
+        "agile": {
+          "level": 3,
+          "importance": 0.65
+        },
+        "communication": {
+          "level": 3,
+          "importance": 0.65
+        },
+        "nodejs": {
+          "level": 2,
+          "importance": 0.45
+        },
+        "node.js": {
+          "level": 2,
+          "importance": 0.45
+        },
+        "next.js": {
+          "level": 4,
+          "importance": 0.88
+        },
+        "tailwind_css": {
+          "level": 3,
+          "importance": 0.8
+        }
+      },
+      "skills": {
+        "javascript": 5,
+        "typescript": 4,
+        "react": 5,
+        "nextjs": 4,
+        "html_css": 4,
+        "tailwindcss": 3,
+        "git": 3,
+        "rest_api": 3,
+        "figma": 3,
+        "vue": 2,
+        "angular": 2,
+        "webpack": 2,
+        "jest": 2,
+        "agile": 3,
+        "communication": 3,
+        "nodejs": 2,
+        "node.js": 2,
+        "next.js": 4,
+        "tailwind_css": 3
+      },
+      "importance_weights": {
+        "javascript": 0.98,
+        "react": 0.95,
+        "html_css": 0.92,
+        "typescript": 0.9,
+        "nextjs": 0.88,
+        "tailwindcss": 0.8,
+        "git": 0.8,
+        "rest_api": 0.78,
+        "figma": 0.72,
+        "agile": 0.65,
+        "communication": 0.65,
+        "vue": 0.55,
+        "angular": 0.55,
+        "webpack": 0.5,
+        "jest": 0.5,
+        "nodejs": 0.45,
+        "python": 0.2,
+        "docker": 0.25,
+        "sql": 0.25,
+        "node.js": 0.45,
+        "next.js": 0.88,
+        "tailwind_css": 0.8
+      }
+    },
+    "data_analyst": {
+      "title": "Data Analyst",
+      "description": "Analyzes business and product data to generate insights, reporting, and recommendations.",
+      "required_skills": {
+        "sql": {
+          "level": 5,
+          "importance": 0.97
+        },
+        "excel": {
+          "level": 4,
+          "importance": 0.9
+        },
+        "data_analysis": {
+          "level": 4,
+          "importance": 0.93
+        },
+        "python": {
+          "level": 3,
+          "importance": 0.85
+        },
+        "statistics": {
+          "level": 3,
+          "importance": 0.88
+        },
+        "tableau": {
+          "level": 3,
+          "importance": 0.8
+        },
+        "power_bi": {
+          "level": 3,
+          "importance": 0.78
+        },
+        "pandas": {
+          "level": 3,
+          "importance": 0.75
+        },
+        "numpy": {
+          "level": 3,
+          "importance": 0.72
+        },
+        "postgresql": {
+          "level": 3,
+          "importance": 0.68
+        },
+        "git": {
+          "level": 2,
+          "importance": 0.6
+        },
+        "r": {
+          "level": 2,
+          "importance": 0.55
+        },
+        "communication": {
+          "level": 3,
+          "importance": 0.65
+        },
+        "agile": {
+          "level": 2,
+          "importance": 0.5
+        },
+        "looker": {
+          "level": 2,
+          "importance": 0.48
+        }
+      },
+      "skills": {
+        "sql": 5,
+        "excel": 4,
+        "python": 3,
+        "tableau": 3,
+        "power_bi": 3,
+        "pandas": 3,
+        "numpy": 3,
+        "data_analysis": 4,
+        "statistics": 3,
+        "postgresql": 3,
+        "git": 2,
+        "r": 2,
+        "communication": 3,
+        "agile": 2,
+        "looker": 2
+      },
+      "importance_weights": {
+        "sql": 0.97,
+        "data_analysis": 0.93,
+        "excel": 0.9,
+        "statistics": 0.88,
+        "python": 0.85,
+        "tableau": 0.8,
+        "power_bi": 0.78,
+        "pandas": 0.75,
+        "numpy": 0.72,
+        "postgresql": 0.68,
+        "communication": 0.65,
+        "git": 0.6,
+        "r": 0.55,
+        "agile": 0.5,
+        "looker": 0.48,
+        "machine_learning": 0.35,
+        "docker": 0.2,
+        "react": 0.1,
+        "nodejs": 0.1,
+        "node.js": 0.1
+      }
+    },
+    "product_manager": {
+      "title": "Product Manager",
+      "description": "Leads product strategy and execution by aligning user needs, business goals, and engineering delivery.",
+      "required_skills": {
+        "communication": {
+          "level": 5,
+          "importance": 0.97
+        },
+        "agile": {
+          "level": 4,
+          "importance": 0.9
+        },
+        "project_management": {
+          "level": 5,
+          "importance": 0.95
+        },
+        "leadership": {
+          "level": 4,
+          "importance": 0.92
+        },
+        "jira": {
+          "level": 3,
+          "importance": 0.82
+        },
+        "scrum": {
+          "level": 4,
+          "importance": 0.88
+        },
+        "data_analysis": {
+          "level": 3,
+          "importance": 0.78
+        },
+        "excel": {
+          "level": 3,
+          "importance": 0.7
+        },
+        "system_design": {
+          "level": 3,
+          "importance": 0.72
+        },
+        "figma": {
+          "level": 2,
+          "importance": 0.65
+        },
+        "sql": {
+          "level": 2,
+          "importance": 0.6
+        },
+        "rest_api": {
+          "level": 2,
+          "importance": 0.55
+        },
+        "confluence": {
+          "level": 3,
+          "importance": 0.75
+        },
+        "problem_solving": {
+          "level": 4,
+          "importance": 0.85
+        },
+        "statistics": {
+          "level": 2,
+          "importance": 0.5
+        }
+      },
+      "skills": {
+        "communication": 5,
+        "agile": 4,
+        "scrum": 4,
+        "project_management": 5,
+        "leadership": 4,
+        "jira": 3,
+        "data_analysis": 3,
+        "excel": 3,
+        "system_design": 3,
+        "figma": 2,
+        "sql": 2,
+        "rest_api": 2,
+        "confluence": 3,
+        "problem_solving": 4,
+        "statistics": 2
+      },
+      "importance_weights": {
+        "communication": 0.97,
+        "project_management": 0.95,
+        "leadership": 0.92,
+        "agile": 0.9,
+        "scrum": 0.88,
+        "problem_solving": 0.85,
+        "jira": 0.82,
+        "data_analysis": 0.78,
+        "confluence": 0.75,
+        "system_design": 0.72,
+        "excel": 0.7,
+        "figma": 0.65,
+        "sql": 0.6,
+        "rest_api": 0.55,
+        "statistics": 0.5,
+        "tensorflow": 0.05,
+        "docker": 0.15,
+        "react": 0.1,
+        "kubernetes": 0.05
+      }
+    },
+    "fullstack_engineer": {
+      "title": "Full Stack Engineer",
+      "description": "Works across the entire application stack from frontend to backend to deployment.",
+      "required_skills": {
+        "javascript": {
+          "level": 5,
+          "importance": 0.97
+        },
+        "react": {
+          "level": 4,
+          "importance": 0.93
+        },
+        "nodejs": {
+          "level": 4,
+          "importance": 0.92
+        },
+        "sql": {
+          "level": 3,
+          "importance": 0.85
+        },
+        "git": {
+          "level": 3,
+          "importance": 0.85
+        },
+        "typescript": {
+          "level": 4,
+          "importance": 0.88
+        },
+        "nextjs": {
+          "level": 3,
+          "importance": 0.78
+        },
+        "postgresql": {
+          "level": 3,
+          "importance": 0.8
+        },
+        "mongodb": {
+          "level": 3,
+          "importance": 0.75
+        },
+        "rest_api": {
+          "level": 4,
+          "importance": 0.9
+        },
+        "docker": {
+          "level": 3,
+          "importance": 0.72
+        },
+        "html_css": {
+          "level": 3,
+          "importance": 0.83
+        },
+        "aws": {
+          "level": 2,
+          "importance": 0.65
+        },
+        "tailwindcss": {
+          "level": 2,
+          "importance": 0.6
+        },
+        "agile": {
+          "level": 3,
+          "importance": 0.68
+        },
+        "communication": {
+          "level": 3,
+          "importance": 0.65
+        },
+        "python": {
+          "level": 2,
+          "importance": 0.5
+        },
+        "redis": {
+          "level": 2,
+          "importance": 0.55
+        },
+        "node.js": {
+          "level": 4,
+          "importance": 0.92
+        },
+        "next.js": {
+          "level": 3,
+          "importance": 0.78
+        },
+        "tailwind_css": {
+          "level": 2,
+          "importance": 0.6
+        }
+      },
+      "skills": {
+        "javascript": 5,
+        "typescript": 4,
+        "react": 4,
+        "nodejs": 4,
+        "nextjs": 3,
+        "sql": 3,
+        "postgresql": 3,
+        "mongodb": 3,
+        "rest_api": 4,
+        "docker": 3,
+        "git": 3,
+        "html_css": 3,
+        "aws": 2,
+        "tailwindcss": 2,
+        "agile": 3,
+        "communication": 3,
+        "python": 2,
+        "redis": 2,
+        "node.js": 4,
+        "next.js": 3,
+        "tailwind_css": 2
+      },
+      "importance_weights": {
+        "javascript": 0.97,
+        "react": 0.93,
+        "nodejs": 0.92,
+        "rest_api": 0.9,
+        "typescript": 0.88,
+        "sql": 0.85,
+        "git": 0.85,
+        "html_css": 0.83,
+        "postgresql": 0.8,
+        "nextjs": 0.78,
+        "mongodb": 0.75,
+        "docker": 0.72,
+        "agile": 0.68,
+        "communication": 0.65,
+        "aws": 0.65,
+        "tailwindcss": 0.6,
+        "redis": 0.55,
+        "python": 0.5,
+        "tensorflow": 0.1,
+        "kubernetes": 0.3,
+        "spark": 0.05,
+        "node.js": 0.92,
+        "next.js": 0.78,
+        "tailwind_css": 0.6
+      }
+    },
+    "data_engineer": {
+      "title": "Data Engineer",
+      "description": "Designs data pipelines, warehouses, and infrastructure for data-driven organizations.",
+      "required_skills": {
+        "python": {
+          "level": 5,
+          "importance": 0.97
+        },
+        "sql": {
+          "level": 5,
+          "importance": 0.95
+        },
+        "spark": {
+          "level": 4,
+          "importance": 0.92
+        },
+        "kafka": {
+          "level": 4,
+          "importance": 0.9
+        },
+        "airflow": {
+          "level": 4,
+          "importance": 0.9
+        },
+        "docker": {
+          "level": 3,
+          "importance": 0.85
+        },
+        "aws": {
+          "level": 3,
+          "importance": 0.82
+        },
+        "git": {
+          "level": 3,
+          "importance": 0.8
+        },
+        "postgresql": {
+          "level": 3,
+          "importance": 0.78
+        },
+        "dbt": {
+          "level": 3,
+          "importance": 0.75
+        },
+        "snowflake": {
+          "level": 3,
+          "importance": 0.75
+        },
+        "hadoop": {
+          "level": 2,
+          "importance": 0.65
+        },
+        "linux": {
+          "level": 3,
+          "importance": 0.7
+        },
+        "kubernetes": {
+          "level": 3,
+          "importance": 0.72
+        },
+        "data_analysis": {
+          "level": 3,
+          "importance": 0.65
+        },
+        "communication": {
+          "level": 2,
+          "importance": 0.6
+        }
+      },
+      "skills": {
+        "python": 5,
+        "sql": 5,
+        "spark": 4,
+        "kafka": 4,
+        "airflow": 4,
+        "docker": 3,
+        "aws": 3,
+        "git": 3,
+        "postgresql": 3,
+        "dbt": 3,
+        "snowflake": 3,
+        "hadoop": 2,
+        "linux": 3,
+        "kubernetes": 3,
+        "data_analysis": 3,
+        "communication": 2
+      },
+      "importance_weights": {
+        "python": 0.97,
+        "sql": 0.95,
+        "spark": 0.92,
+        "kafka": 0.9,
+        "airflow": 0.9,
+        "docker": 0.85,
+        "aws": 0.82,
+        "git": 0.8,
+        "postgresql": 0.78,
+        "dbt": 0.75,
+        "snowflake": 0.75,
+        "kubernetes": 0.72,
+        "linux": 0.7,
+        "hadoop": 0.65,
+        "data_analysis": 0.65,
+        "communication": 0.6,
+        "react": 0.05,
+        "angular": 0.05,
+        "figma": 0.05
+      }
+    },
+    "ml_engineer": {
+      "title": "ML Engineer",
+      "description": "Builds and deploys machine learning models and AI-powered systems.",
+      "required_skills": {
+        "python": {
+          "level": 5,
+          "importance": 0.98
+        },
+        "tensorflow": {
+          "level": 4,
+          "importance": 0.92
+        },
+        "scikit_learn": {
+          "level": 4,
+          "importance": 0.9
+        },
+        "pandas": {
+          "level": 4,
+          "importance": 0.9
+        },
+        "numpy": {
+          "level": 4,
+          "importance": 0.88
+        },
+        "keras": {
+          "level": 4,
+          "importance": 0.9
+        },
+        "pytorch": {
+          "level": 4,
+          "importance": 0.88
+        },
+        "sql": {
+          "level": 3,
+          "importance": 0.78
+        },
+        "git": {
+          "level": 3,
+          "importance": 0.75
+        },
+        "docker": {
+          "level": 3,
+          "importance": 0.72
+        },
+        "flask": {
+          "level": 3,
+          "importance": 0.7
+        },
+        "aws": {
+          "level": 3,
+          "importance": 0.68
+        },
+        "statistics": {
+          "level": 3,
+          "importance": 0.85
+        },
+        "data_analysis": {
+          "level": 3,
+          "importance": 0.82
+        },
+        "machine_learning": {
+          "level": 5,
+          "importance": 0.97
+        },
+        "linux": {
+          "level": 2,
+          "importance": 0.6
+        },
+        "communication": {
+          "level": 3,
+          "importance": 0.65
+        },
+        "jupyter": {
+          "level": 2,
+          "importance": 0.58
+        },
+        "mongodb": {
+          "level": 2,
+          "importance": 0.45
+        },
+        "spark": {
+          "level": 2,
+          "importance": 0.42
+        },
+        "mlflow": {
+          "level": 2,
+          "importance": 0.55
+        },
+        "scikit-learn": {
+          "level": 4,
+          "importance": 0.9
+        }
+      },
+      "skills": {
+        "python": 5,
+        "tensorflow": 4,
+        "keras": 4,
+        "scikit_learn": 4,
+        "pandas": 4,
+        "numpy": 4,
+        "pytorch": 4,
+        "sql": 3,
+        "git": 3,
+        "docker": 3,
+        "flask": 3,
+        "aws": 3,
+        "statistics": 3,
+        "data_analysis": 3,
+        "machine_learning": 5,
+        "linux": 2,
+        "communication": 3,
+        "jupyter": 2,
+        "mongodb": 2,
+        "spark": 2,
+        "mlflow": 2,
+        "scikit-learn": 4
+      },
+      "importance_weights": {
+        "python": 0.98,
+        "machine_learning": 0.97,
+        "tensorflow": 0.92,
+        "keras": 0.9,
+        "scikit_learn": 0.9,
+        "pandas": 0.9,
+        "numpy": 0.88,
+        "pytorch": 0.88,
+        "statistics": 0.85,
+        "data_analysis": 0.82,
+        "sql": 0.78,
+        "git": 0.75,
+        "docker": 0.72,
+        "flask": 0.7,
+        "aws": 0.68,
+        "communication": 0.65,
+        "linux": 0.6,
+        "jupyter": 0.58,
+        "mlflow": 0.55,
+        "mongodb": 0.45,
+        "spark": 0.42,
+        "angular": 0.05,
+        "react": 0.05,
+        "tailwindcss": 0.05,
+        "tailwind_css": 0.05,
+        "scikit-learn": 0.9
+      }
+    },
+    "devops_engineer": {
+      "title": "DevOps Engineer",
+      "description": "Manages infrastructure, deployment pipelines, and system reliability.",
+      "required_skills": {
+        "docker": {
+          "level": 5,
+          "importance": 0.97
+        },
+        "kubernetes": {
+          "level": 5,
+          "importance": 0.95
+        },
+        "aws": {
+          "level": 4,
+          "importance": 0.92
+        },
+        "linux": {
+          "level": 4,
+          "importance": 0.93
+        },
+        "ci_cd": {
+          "level": 4,
+          "importance": 0.9
+        },
+        "terraform": {
+          "level": 4,
+          "importance": 0.88
+        },
+        "ansible": {
+          "level": 3,
+          "importance": 0.78
+        },
+        "jenkins": {
+          "level": 3,
+          "importance": 0.82
+        },
+        "github_actions": {
+          "level": 3,
+          "importance": 0.8
+        },
+        "git": {
+          "level": 3,
+          "importance": 0.85
+        },
+        "python": {
+          "level": 3,
+          "importance": 0.75
+        },
+        "bash": {
+          "level": 3,
+          "importance": 0.75
+        },
+        "nginx": {
+          "level": 3,
+          "importance": 0.72
+        },
+        "prometheus": {
+          "level": 3,
+          "importance": 0.7
+        },
+        "grafana": {
+          "level": 3,
+          "importance": 0.68
+        },
+        "gcp": {
+          "level": 2,
+          "importance": 0.65
+        },
+        "azure": {
+          "level": 2,
+          "importance": 0.65
+        },
+        "communication": {
+          "level": 2,
+          "importance": 0.6
+        }
+      },
+      "skills": {
+        "docker": 5,
+        "kubernetes": 5,
+        "aws": 4,
+        "linux": 4,
+        "ci_cd": 4,
+        "terraform": 4,
+        "ansible": 3,
+        "jenkins": 3,
+        "github_actions": 3,
+        "git": 3,
+        "python": 3,
+        "bash": 3,
+        "nginx": 3,
+        "prometheus": 3,
+        "grafana": 3,
+        "gcp": 2,
+        "azure": 2,
+        "communication": 2
+      },
+      "importance_weights": {
+        "docker": 0.97,
+        "kubernetes": 0.95,
+        "linux": 0.93,
+        "aws": 0.92,
+        "ci_cd": 0.9,
+        "terraform": 0.88,
+        "git": 0.85,
+        "jenkins": 0.82,
+        "github_actions": 0.8,
+        "ansible": 0.78,
+        "python": 0.75,
+        "bash": 0.75,
+        "nginx": 0.72,
+        "prometheus": 0.7,
+        "grafana": 0.68,
+        "gcp": 0.65,
+        "azure": 0.65,
+        "communication": 0.6,
+        "react": 0.05,
+        "pandas": 0.1,
+        "figma": 0.05
+      }
+    }
+  }
+}

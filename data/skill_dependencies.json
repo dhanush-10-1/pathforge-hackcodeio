@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "typescript": ["javascript"],
+    "react": ["javascript", "html_css"],
+    "nextjs": ["react", "typescript"],
+    "nodejs": ["javascript"],
+    "fastapi": ["python"],
+    "django": ["python", "sql"],
+    "flask": ["python"],
+    "postgresql": ["sql"],
+    "kubernetes": ["docker"],
+    "ci_cd": ["git", "docker"],
+    "machine_learning": ["python"],
+    "deep_learning": ["machine_learning"],
+    "nlp": ["machine_learning"],
+    "data_analysis": ["python", "sql"],
+    "graphql": ["rest_api"],
+    "system_design": ["rest_api", "sql"],
+    "tailwindcss": ["html_css"]
+  }
+}
