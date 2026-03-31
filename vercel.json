@@ -2,8 +2,5 @@
   "buildCommand": "npm run build",
   "framework": "nextjs",
   "installCommand": "npm install",
-  "devCommand": "npm run dev",
-  "env": {
-    "NEXT_PUBLIC_API_URL": "@railway_backend_url"
-  }
+  "devCommand": "npm run dev"
 }
