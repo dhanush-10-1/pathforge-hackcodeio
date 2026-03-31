@@ -14,10 +14,10 @@ services:
   - type: web
     name: pathforge-ml
     runtime: python
+    pythonVersion: 3.11
     plan: free
-    buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn app.main:app --host 0.0.0.0 --port 8001
-    rootDir: ml
+    buildCommand: cd ml && pip install -r requirements.txt
+    startCommand: cd ml && uvicorn app.main:app --host 0.0.0.0 --port 8001
     envVars:
       - key: ML_ENV
         value: production
@@ -30,10 +30,10 @@ services:
   - type: web
     name: pathforge-backend
     runtime: python
+    pythonVersion: 3.11
     plan: free
-    buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn app.main:app --host 0.0.0.0 --port 8000
-    rootDir: backend
+    buildCommand: cd backend && pip install -r requirements.txt
+    startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port 8000
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -45,8 +45,6 @@ services:
           property: renderURL
       - key: JWT_SECRET
         sync: false
-      - key: ALLOWED_HOSTS
-        value: "*.render.com"
       - key: ALLOW_ORIGINS
         sync: false
       - key: SUPABASE_URL
@@ -60,10 +58,10 @@ services:
   - type: web
     name: pathforge-frontend
     runtime: node
+    nodeVersion: 18
     plan: free
-    buildCommand: npm install && npm run build
-    startCommand: npm start
-    rootDir: frontend
+    buildCommand: cd frontend && npm install && npm run build
+    startCommand: cd frontend && npm start
     envVars:
       - key: NEXT_PUBLIC_API_URL
         fromService:
