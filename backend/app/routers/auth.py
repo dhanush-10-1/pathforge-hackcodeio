@@ -3,7 +3,7 @@
 import os
 from datetime import datetime, timedelta, timezone
 
-from fastapi import APIRouter, HTTPException, Depends
+from fastapi import APIRouter, HTTPException, Depends, Header
 from jose import jwt, JWTError
 from passlib.context import CryptContext
 from sqlalchemy import select
@@ -28,11 +28,38 @@ def create_token(user_id: str) -> str:
 
 
 async def get_current_user(
-    token: str = Depends(lambda: None),
+    token: str = Depends(get_token_from_header),
     db: AsyncSession = Depends(get_db),
-) -> User | None:
-    """Optional auth — returns None if no token."""
-    return None  # Simplified for hackathon
+) -> User:
+    """Extract and validate JWT token, return authenticated user."""
+    try:
+        payload = jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALGORITHM])
+        user_id: str = payload.get("sub")
+        if user_id is None:
+            raise HTTPException(status_code=401, detail="Invalid token")
+    except JWTError:
+        raise HTTPException(status_code=401, detail="Invalid or expired token")
+    
+    # Fetch user from DB
+    result = await db.execute(select(User).where(User.id == user_id))
+    user = result.scalar_one_or_none()
+    if not user:
+        raise HTTPException(status_code=401, detail="User not found")
+    
+    return user
+
+
+def get_token_from_header(authorization: str = Header(None)) -> str:
+    """Extract Bearer token from Authorization header."""
+    if not authorization:
+        raise HTTPException(status_code=401, detail="Missing authentication token")
+    try:
+        scheme, token = authorization.split()
+        if scheme.lower() != "bearer":
+            raise HTTPException(status_code=401, detail="Invalid authentication scheme")
+        return token
+    except ValueError:
+        raise HTTPException(status_code=401, detail="Invalid authorization header format")
 
 
 @router.post("/register", response_model=TokenResponse)

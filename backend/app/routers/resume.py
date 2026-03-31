@@ -4,25 +4,27 @@ from fastapi import APIRouter, HTTPException, Depends, UploadFile, File, Form
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db.database import get_db
-from app.db.models import Resume, SkillProfile
+from app.db.models import Resume, SkillProfile, User
 from app.schemas.schemas import ResumeUploadResponse
 from app.services import ml_client
+from app.routers.auth import get_current_user
 
 router = APIRouter()
 
 
 @router.post("/upload", response_model=ResumeUploadResponse)
 async def upload_resume(
-    user_id: str = Form(...),
     file: UploadFile = File(None),
     resume_text: str = Form(None),
     target_role: str = Form(None),
+    current_user: User = Depends(get_current_user),
     db: AsyncSession = Depends(get_db),
 ):
     """
     Upload a resume (PDF or raw text) and extract skills.
-    Calls the ML service for BERT-based skill extraction.
+    Requires authentication. Calls the ML service for BERT-based skill extraction.
     """
+    user_id = current_user.id
     text = ""
 
     if file and file.filename:

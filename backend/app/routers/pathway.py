@@ -5,9 +5,10 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db.database import get_db
-from app.db.models import QuizSession, LearningPathway
+from app.db.models import QuizSession, LearningPathway, User
 from app.schemas.schemas import PathwayGenerateRequest, PathwayResponse
 from app.services import ml_client
+from app.routers.auth import get_current_user
 
 router = APIRouter()
 
@@ -15,19 +16,23 @@ router = APIRouter()
 @router.post("/generate", response_model=PathwayResponse)
 async def generate_pathway(
     data: PathwayGenerateRequest,
+    current_user: User = Depends(get_current_user),
     db: AsyncSession = Depends(get_db),
 ):
     """
     Generate a personalized learning pathway based on quiz results.
-    Uses the adaptive engine: gap calculator → priority scorer → topological sort.
+    Requires authentication. Uses the adaptive engine: gap calculator → priority scorer → topological sort.
     """
-    # Get quiz session
+    # Get quiz session and verify user ownership
     result = await db.execute(
         select(QuizSession).where(QuizSession.id == data.session_id)
     )
     session = result.scalar_one_or_none()
     if not session:
         raise HTTPException(status_code=404, detail="Quiz session not found")
+    
+    if session.user_id != current_user.id:
+        raise HTTPException(status_code=403, detail="Unauthorized: You can only access your own pathways")
 
     if session.status != "completed":
         raise HTTPException(status_code=400, detail="Quiz not yet completed. Submit answers first.")

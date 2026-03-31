@@ -7,7 +7,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db.database import get_db
-from app.db.models import QuizSession, SkillProfile, Resume
+from app.db.models import QuizSession, SkillProfile, Resume, User
 from app.schemas.schemas import (
     QuizStartRequest,
     QuizStartResponse,
@@ -17,6 +17,7 @@ from app.schemas.schemas import (
     ExternalQuizSubmitResponse,
 )
 from app.services import ml_client
+from app.routers.auth import get_current_user
 
 router = APIRouter()
 
@@ -24,47 +25,45 @@ router = APIRouter()
 @router.post("/start", response_model=QuizStartResponse)
 async def start_quiz(
     data: QuizStartRequest,
-    user_id: str = "",
+    current_user: User = Depends(get_current_user),
     db: AsyncSession = Depends(get_db),
 ):
     """
-    Start a diagnostic quiz.
+    Start a diagnostic quiz. Requires authentication.
     Fetches the user's claimed skills and generates targeted questions.
     """
+    user_id = current_user.id
+    
     # Get role requirements to know which skills to test
     try:
         role_data = await ml_client.map_role(data.target_role)
     except Exception as e:
         raise HTTPException(status_code=502, detail=f"ML service error: {str(e)}")
 
-    effective_user_id = data.user_id or user_id or "demo-user"
     skill_ids = list(role_data["required_skills"].keys())
     claimed_levels: dict[str, int] = data.claimed_levels or {}
     experience_years = data.experience_years
 
-    # If user has claimed skills, prioritize those
-    if effective_user_id:
-        result = await db.execute(
-            select(SkillProfile).where(SkillProfile.user_id == effective_user_id)
+    # Fetch user's claimed skills
+    result = await db.execute(
+        select(SkillProfile).where(SkillProfile.user_id == user_id)
+    )
+    user_skills = result.scalars().all()
+    claimed_ids = [s.skill_id for s in user_skills]
+    for profile in user_skills:
+        claimed_levels.setdefault(profile.skill_id, profile.claimed_level)
+    # Test claimed skills + required skills
+    skill_ids = list(set(skill_ids + claimed_ids))
+
+    if experience_years is None:
+        resume_result = await db.execute(
+            select(Resume)
+            .where(Resume.user_id == user_id)
+            .order_by(Resume.created_at.desc())
         )
-        user_skills = result.scalars().all()
-        claimed_ids = [s.skill_id for s in user_skills]
-        for profile in user_skills:
-            claimed_levels.setdefault(profile.skill_id, profile.claimed_level)
-        # Test claimed skills + required skills
-        skill_ids = list(set(skill_ids + claimed_ids))
-
-        if experience_years is None:
-            resume_result = await db.execute(
-                select(Resume)
-                .where(Resume.user_id == effective_user_id)
-                .order_by(Resume.created_at.desc())
-            )
-            latest_resume = resume_result.scalars().first()
-            if latest_resume:
-                experience_years = latest_resume.experience_years
-
-    # Generate quiz
+        latest_resume = resume_result.scalars().first()
+        if latest_resume:
+            experience_years = latest_resume.experience_years
     try:
         quiz_data = await ml_client.generate_quiz(
             skill_ids,
@@ -82,7 +81,7 @@ async def start_quiz(
 
     # Save quiz session
     session = QuizSession(
-        user_id=effective_user_id,
+        user_id=user_id,
         quiz_data=quiz_data,
         target_role=data.target_role,
         status="pending",
