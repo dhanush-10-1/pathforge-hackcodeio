@@ -5,13 +5,5 @@
   "devCommand": "npm run dev",
   "env": {
     "NEXT_PUBLIC_API_URL": "@railway_backend_url"
-  },
-  "envs": {
-    "preview": {
-      "NEXT_PUBLIC_API_URL": "@railway_backend_url"
-    },
-    "production": {
-      "NEXT_PUBLIC_API_URL": "@railway_backend_url"
-    }
   }
 }
